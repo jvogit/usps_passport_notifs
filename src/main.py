@@ -28,9 +28,13 @@ def main():
 
     response = req.json()
 
+    print("Received:", str(response))
+
     if not response['dates']:
+        print("No appointment")
         exit()
 
+    print("Send email")
     with smtplib.SMTP(host="smtp-mail.outlook.com", port=587) as outlook:
         outlook.ehlo('mylowercasehost')
         outlook.starttls()
